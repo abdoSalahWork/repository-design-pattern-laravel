@@ -20,7 +20,7 @@ class CreateRepository extends Command
     use ProviderHelper;
     use DirectoryHelper;
 
-    protected $signature="repository:create {name} {--resource}";
+    protected $signature="repository:create {path}/{name} {--resource}";
 
     protected $description="Create New Repository";
 
@@ -42,7 +42,7 @@ class CreateRepository extends Command
         $this->originalName = $this->argument('name');
         $isResource = $this->option('resource');
         $this->name = $this->getFileName($this->originalName);
-        $this->extraPath = $this->getDirctoryPath($this->originalName) . '/';
+        $this->extraPath = $this->getDirctoryPath($this->originalName) . '/path';
 
         if($this->isExistsFiles($this->name) == true)
         {
